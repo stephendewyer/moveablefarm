@@ -17,11 +17,6 @@
 	src: url($lib/fonts/eroded/Eroded.ttf);
 }
 
-@font-face {
-	font-family: "Lucida_Sans";
-	src: url($lib/fonts/lucida-sans/LSANS.ttf);
-}
-
 :root {
 	--font-body: ""; 
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
