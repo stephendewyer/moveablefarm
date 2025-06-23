@@ -1,0 +1,82 @@
+[
+    {
+        "index": 1,
+        "name": "local farm finder",
+        "route": "/local-farm-finder",
+        "children" : []
+    },
+    {
+        "index": 2,
+        "name": "my farmer network",
+        "route": "/my-farmer-network",
+        "children" : []
+    },
+    {
+        "index": 3,
+        "name": "AI farm tools",
+        "route": "/AI-farm-tools",
+        "children": []
+    },
+    {
+        "index": 4,
+        "name": "index",
+        "route": "/",
+        "children": []
+    },
+    {
+        "index": 5,
+        "name": "about",
+        "route": "/about",
+        "children": [
+            {
+                "index": 5.1,
+                "name": "story",
+                "route": "/about/story",
+                "children": []
+            },
+            {
+                "index": 5.2,
+                "name": "team",
+                "route": "/about/team",
+                "children": []
+            },
+            {
+                "index": 5.3,
+                "name": "careers",
+                "route": "/about/careers",
+                "children": []
+            }
+        ]
+    },
+    {
+        "index": 6,
+        "name": "contact",
+        "route": "/contact",
+        "children": []
+    },
+    {
+        "index": 7,
+        "name": "logins",
+        "route": "/logins",
+        "children": [
+            {
+                "index": 7.1,
+                "name": "farmer",
+                "route": "/logins/farmer",
+                "children": []
+            },
+            {
+                "index": 7.2,
+                "name": "shopper",
+                "route": "/logins/shopper",
+                "children": []
+            },
+            {
+                "index": 7.3,
+                "name": "administrator",
+                "route": "/logins/administrator",
+                "children": []
+            }
+        ]
+    }
+]

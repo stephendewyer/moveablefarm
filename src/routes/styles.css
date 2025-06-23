@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "Vonder_Clean";
+	src: url($lib/fonts/vonder-clean/Vonder_Clean.ttf);
+}
+
+@font-face {
+	font-family: "Park_Lane";
+	src: url($lib/fonts/park-lane/Park_Lane_NF.ttf);
+}
+
+@font-face {
+	font-family: "Eroded";
+	src: url($lib/fonts/eroded/Eroded.ttf);
+}
+
+@font-face {
+	font-family: "Lucida_Sans";
+	src: url($lib/fonts/lucida-sans/LSANS.ttf);
+}
+
+:root {
+	--font-body: ""; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color:#1C2226;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-color: #434041;
+	color: #F9EEEB;
+}
+
+input, textarea {
+	font-family: "IBM_Plex_Sans";
+}
+
+a {
+    color: #9CD8D5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease-out;
+}
+
+a:hover {
+    color: #f9e3c5;
+}
+
+
+img {
+	width: 100%;
+}
+
+svg {
+	width: 100%;
+	overflow: visible;
+}

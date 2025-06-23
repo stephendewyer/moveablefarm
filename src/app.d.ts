@@ -8,6 +8,13 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	interface NavTab {
+		index: number;
+		name: string;
+		route: string;
+		children: NavTab[];
+	};
 }
 
 export {};
