@@ -1,4 +1,5 @@
 <script lang="ts">
+    import MainNavColumnDropdown from "./MainNavColumnDropdown.svelte";
     import MoveableFarmLogo from "$lib/images/logo/moveable_farm_logo.svg?raw";
     import NavigationData from "$lib/data/navigationData.json";
 
@@ -9,8 +10,6 @@
             navTab.name !== "index"
         );
     });
-
-    console.log(leftMainNavData)
 
     const rightMainNavData: NavTab[] = NavigationData.filter((navTab, index) => {
         return (
@@ -32,11 +31,15 @@
 <nav>
     <ul class="nav_tabs_desktop">
         {#each leftMainNavData as navTab, index}
-            <a href={navTab.route} >
-                <li>
-                    {navTab.name}
-                </li>
-            </a>
+            {#if navTab.children.length === 0}
+                <a href={navTab.route} class="nav_column" >
+                    <li>
+                        {navTab.name}
+                    </li>
+                </a>
+            {:else if navTab.children.length > 0}
+                <MainNavColumnDropdown dropdownNavData={navTab} />
+            {/if}
         {/each}
     </ul>
     {#if indexTab}
@@ -52,14 +55,17 @@
     {/if}
     <ul class="nav_tabs_desktop">
         {#each rightMainNavData as navTab, index}
-            <a href={navTab.route} >
-                <li>
-                    {navTab.name}
-                </li>
-            </a>
+            {#if navTab.children.length === 0}
+                <a href={navTab.route} class="nav_column">
+                    <li>
+                        {navTab.name}
+                    </li>
+                </a>
+            {:else if navTab.children.length > 0}
+                <MainNavColumnDropdown dropdownNavData={navTab} />
+            {/if}
         {/each}
     </ul>
-    
 </nav>
 <style>
 
@@ -85,17 +91,61 @@
     .logo {
         width: 20rem;
         fill: #231F20;
+        transition: fill 0.3s ease-out;
     }
 
+    .logo:hover {
+        fill: #145aa9;
+    }
 
     li {
         background-color: rgba(249, 238, 235, 0.5);
         transition: background-color 0.3s ease-out;
         padding: 1rem 2rem;
         color: #231F20;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        transition: color 0.3s ease-out;
     }
 
     li:hover {
         background-color: rgba(249, 238, 235, 0.75);
+        color: #145aa9;
     }
+
+    .nav_column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 14rem;
+    }
+
+    @media screen and (max-width: 1440px) {
+        .logo {
+            max-width: 14rem;
+        }
+
+        .nav_column {
+            width: 10rem;
+        }
+    }
+
+    @media screen and (max-width: 1080px) {
+        .logo {
+            max-width: 10rem;
+        }
+
+        .nav_column {
+            width: 8rem;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        .logo {
+            max-width: 8rem;
+        }
+    }
+
 </style>

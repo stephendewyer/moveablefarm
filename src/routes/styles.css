@@ -54,3 +54,15 @@ svg {
 	width: 100%;
 	overflow: visible;
 }
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1080px) {
+
+}
+
+@media screen and (max-width: 720px) {
+
+}
