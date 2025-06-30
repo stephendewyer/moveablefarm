@@ -107,7 +107,7 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 1rem;
-        transition: color 0.3s ease-out;
+        transition: color 0.3s ease-out, background-color 0.3s ease-out;
     }
 
     li:hover {
