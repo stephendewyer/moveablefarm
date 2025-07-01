@@ -2,6 +2,13 @@
     import MainNavColumnDropdown from "./MainNavColumnDropdown.svelte";
     import MoveableFarmLogo from "$lib/images/logo/moveable_farm_logo.svg?raw";
     import NavigationData from "$lib/data/navigationData.json";
+    import MobileNavSideDrawerToggleButton from "./MobileNavSideDrawerToggleButton.svelte";
+
+    export let sideDrawer: boolean = false;
+
+    let prevScrollPos: number = 0;
+
+    let showNav: boolean = true; // boolean to show or hid nav bar
 
     const leftMainNavData: NavTab[] = NavigationData.filter((navTab, index) => {
         return (
@@ -27,8 +34,27 @@
         };
     });
 
+
+
 </script>
-<nav>
+
+<svelte:window on:scroll={()=>{
+
+    const handleScroll  = () => {
+        // find current scroll position
+        const currentScrollPos = window.scrollY || document.documentElement.scrollTop;
+
+        // set state based on location info
+        showNav = ((prevScrollPos > currentScrollPos) || currentScrollPos < 10);
+        // set state to new scroll position
+        prevScrollPos = currentScrollPos;
+    };
+
+    handleScroll();
+
+}} />
+
+<nav class={showNav ? "nav_bar_visible" : "nav_bar_hidden"}>
     <ul class="nav_tabs_desktop">
         {#each leftMainNavData as navTab, index}
             {#if navTab.children.length === 0}
@@ -66,13 +92,39 @@
             {/if}
         {/each}
     </ul>
+    <div id="nav_mobile">
+        <MobileNavSideDrawerToggleButton bind:open={sideDrawer}/>
+    </div>
 </nav>
 <style>
-
-    nav {
+    .nav_bar_visible {
+        top: 0;
+        overflow: visible;
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 0;
+        z-index: 3;
         display: flex;
-        width: 100%;
+        flex-direction: row;
         justify-content: center;
+        will-change: top;
+        transition: top 0.6s;
+    }
+
+    .nav_bar_hidden {
+        top: -12rem;
+        overflow: visible;
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 0;
+        z-index: 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        will-change: top;
+        transition: top 0.6s;
     }
 
     ul {
@@ -80,6 +132,7 @@
         padding: 0;
         margin: 0;
         display: flex;
+        position: relative;
     }
 
     .nav_tabs_desktop {
@@ -122,6 +175,16 @@
         max-width: 14rem;
     }
 
+    #nav_mobile {
+        display: none;
+        margin: 0;
+        position: relative;
+    }
+
+    .mobile_nav_menu_toggle_button_container {
+        position: relative;
+    }
+
     @media screen and (max-width: 1440px) {
         .logo {
             max-width: 14rem;
@@ -143,8 +206,25 @@
     }
 
     @media screen and (max-width: 720px) {
+
+        .nav_bar_visible {
+            justify-content: space-between;
+        }
+
+        .nav_bar_hidden {
+            justify-content: space-between;
+        }
+
         .logo {
             max-width: 8rem;
+        }
+
+        .nav_tabs_desktop {
+            display: none;
+        }
+
+        #nav_mobile { 
+            display: block;
         }
     }
 

@@ -1,7 +1,8 @@
 <script lang="ts">
-    export let dropdownNavData: NavTab;
     import Arrow from "$lib/images/icons/arrow.svg?raw";
     import LoginIcon from "$lib/images/icons/login_icon.svg?raw";
+
+    export let dropdownNavData: NavTab;
 
     let openDropdown: boolean = false;
 
@@ -31,26 +32,30 @@
         </div>
     </li>
     <div 
-        id="nav_dropdown_menu"
+        id="nav_dropdown_menu_container"
         role="tabpanel"
-        style={openDropdown ? `height: ${navDropdownHeight}px;` : `height: 0;`}
     >
         <div 
-            bind:clientHeight={navDropdownHeight}
-            id="nav_dropdown_menu_inner"
+            id="nav_dropdown_menu"
+            style={openDropdown ? `height: ${navDropdownHeight}px;` : `height: 0px;`}
         >
-            {#each dropdownNavData.children as subNavTab, index}
-                <a href={subNavTab.route}>
-                    <li>
-                        <div 
-                            id="dropdown_tab"             
-                            style={openDropdown ? `opacity: ${100}%;` : `opacity: 0;`}
-                        >
-                            {subNavTab.name}
-                        </div>
-                    </li>
-                </a>
-            {/each}
+            <ul 
+                bind:clientHeight={navDropdownHeight}
+                id="nav_dropdown_menu_inner"
+            >
+                {#each dropdownNavData.children as subNavTab, index}
+                    <a href={subNavTab.route}>
+                        <li>
+                            <div 
+                                id="dropdown_tab"             
+                                style={openDropdown ? `opacity: ${100}%;` : `opacity: 0;`}
+                            >
+                                {subNavTab.name}
+                            </div>
+                        </li>
+                    </a>
+                {/each}
+            </ul>
         </div>
     </div>
 </div>
@@ -70,7 +75,12 @@
         position: relative;
     }
 
+    #nav_dropdown_menu_container {
+        position: relative;
+    }
+
     #nav_dropdown_menu {
+        width: 100%;
         position: relative;
         overflow: hidden;
         will-change: height;
@@ -78,9 +88,11 @@
     }
 
     #nav_dropdown_menu_inner {
-        position: absolute;
-        left: 0;
-        right: 0;
+        list-style: none;
+        position: relative;
+        height: auto;
+        transition: opacity 0.3s linear 0.18s;
+        padding: 0;
     }
 
     #toggle_arrow {
