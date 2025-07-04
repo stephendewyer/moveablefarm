@@ -55,6 +55,26 @@ svg {
 	overflow: visible;
 }
 
+h1 {
+	color: #e6e1c2;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+h2 {
+	color: #004059;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+p {
+	color: #F9EEEB;
+	margin: 0;
+	padding: 0;
+}
+
 @media screen and (max-width: 1440px) {
 
 }

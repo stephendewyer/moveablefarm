@@ -1,14 +1,14 @@
 [
     {
         "index": 1,
-        "name": "local farm finder",
-        "route": "/local-farm-finder",
+        "name": "shop farm goods",
+        "route": "/shop-farm-goods",
         "children" : []
     },
     {
         "index": 2,
-        "name": "my farmer network",
-        "route": "/my-farmer-network",
+        "name": "farmer social",
+        "route": "/farmer-social",
         "children" : []
     },
     {
